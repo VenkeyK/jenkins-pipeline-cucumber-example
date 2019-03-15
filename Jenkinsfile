@@ -8,27 +8,24 @@ pipeline{
 
             steps {
 
-                withMaven(maven: 'maven_3_5_4') {
                     bat 'mvn clean install'
 
                 }
 
             }
-        }
+        
     stage ('Test Stage') {
 
             steps {
-
-                withMaven(maven: 'maven_3_5_4') {
+               
                     bat 'mvn test'
 
                 }
 
             }
-        }
+        
 
-
-        stage ('Cucumber Reports') {
+      stage ('Cucumber Reports') {
 
             steps {
                 cucumber buildStatus: "UNSTABLE",
